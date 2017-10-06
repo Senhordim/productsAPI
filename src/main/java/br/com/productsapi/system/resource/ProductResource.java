@@ -37,10 +37,9 @@ public class ProductResource {
 	 * Declrando requisição POST  
 	 * Para inserir um produto
 	 */
-	@PostMapping("/api/product")
-	public Product save(@RequestBody Product product) {
-		productDAO.save(product);
-		return product;
+	@PostMapping
+	public Product addProduct(@RequestBody Product product) {
+		return productDAO.save(product);
 	}
 	
 
