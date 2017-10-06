@@ -12,9 +12,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="products")
 public class Product {
-	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private Long id;
 	
@@ -26,6 +25,9 @@ public class Product {
 	
 	@Column(name="unit_price")
 	private BigDecimal unitPrice;
+	
+	public Product() {
+	}
 
 	public Long getId() {
 		return id;
@@ -57,6 +59,12 @@ public class Product {
 
 	public void setUnitPrice(BigDecimal unitPrice) {
 		this.unitPrice = unitPrice;
+	}
+	
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", code=" + code + ", description=" + description + ", unitPrice=" + unitPrice
+				+ "]";
 	}
 	
 }
