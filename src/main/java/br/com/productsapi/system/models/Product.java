@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +27,10 @@ public class Product {
 	
 	@Column(name="unit_price")
 	private BigDecimal unitPrice;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 	
 	public Product() {
 	}
@@ -61,10 +67,18 @@ public class Product {
 		this.unitPrice = unitPrice;
 	}
 	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", code=" + code + ", description=" + description + ", unitPrice=" + unitPrice
-				+ "]";
+				+ ", user=" + user + "]";
 	}
 	
 }
